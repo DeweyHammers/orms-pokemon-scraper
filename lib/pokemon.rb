@@ -24,7 +24,6 @@ class Pokemon
             WHERE id = ?;
         SQL
 
-        
         db.execute(sql, id).map {|row| Pokemon.new(row[0], row[1], row[2])}.first
     end
 end

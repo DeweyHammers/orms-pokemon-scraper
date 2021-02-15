@@ -16,4 +16,15 @@ class Pokemon
 
         db.execute(sql, name, type)
     end
+
+    def self.find(id, db)
+        sql = <<-SQL
+            SELECT * 
+            FROM pokemon
+            WHERE id = ?;
+        SQL
+
+        
+        db.execute(sql, id).map {|row| Pokemon.new(row[0], row[1], row[2])}.first
+    end
 end
